@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+<div class="text-center">
+    @Configuration["db_server"]
+</div>
