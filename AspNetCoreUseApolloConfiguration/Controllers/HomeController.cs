@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreUseApolloConfiguration.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class HomeController : ControllerBase
     {
@@ -19,6 +19,7 @@ namespace AspNetCoreUseApolloConfiguration.Controllers
 
         public IActionResult Get()
         {
+            _logger.LogInformation("日志测试");
             return Ok(_configuration["db_server"]);
         }
     }
