@@ -16,8 +16,6 @@ namespace AspNetCoreUseApolloConfiguration
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config.AddApollo(config.Build().GetSection("Apollo"));
-
-                    hostingContext.Configuration = config.Build();
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
