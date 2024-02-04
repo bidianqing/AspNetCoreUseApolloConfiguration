@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreUseApolloConfiguration.Controllers
 {
@@ -17,10 +15,10 @@ namespace AspNetCoreUseApolloConfiguration.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Get()
+        public string Get()
         {
             _logger.LogInformation("日志测试");
-            return Ok(_configuration["db_server"]);
+            return _configuration["db_server"];
         }
     }
 }

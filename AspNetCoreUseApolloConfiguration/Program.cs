@@ -1,25 +1,12 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+var builder = WebApplication.CreateBuilder(args);
 
-namespace AspNetCoreUseApolloConfiguration
-{
-    public static class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+// Add services to the container.
+builder.Configuration.AddApollo(builder.Configuration.GetSection("Apollo"));
+builder.Services.AddControllers();
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    config.AddApollo(config.Build().GetSection("Apollo"));
-                })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+app.MapControllers();
+
+app.Run();
